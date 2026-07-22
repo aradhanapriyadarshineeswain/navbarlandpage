@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Nav Landing Page</title>
+    <style>
+        /* --- CSS STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            height: 200vh; /* Extra height to allow scrolling */
+            background-color: #f4f4f9;
+        }
+
+        /* Initial Navbar Style */
+        #navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease; /* Smooth transition */
+            background-color: transparent;
+            z-index: 1000;
+        }
+
+        /* Scrolled Navbar Style (Triggered by JS) */
+        #navbar.scrolled {
+            background-color: #2c3e50;
+            padding: 10px 50px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            transition: color 0.4s;
+        }
+
+        #navbar.scrolled .logo {
+            color: #fff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        /* Change text color when navbar is scrolled */
+        #navbar.scrolled nav ul li a {
+            color: #ecf0f1;
+        }
+
+        /* Hover Effect for Menu Items */
+        nav ul li a:hover {
+            background-color: #3498db;
+            color: white !important;
+        }
+
+        /* Hero Section for Context */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header id="navbar">
+        <div class="logo">Prodigy Nav</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Welcome to My Landing Page</h1>
+        <p>Scroll down to see the navbar change style!</p>
+    </section>
+
+    <section style="padding: 100px; text-align: center;">
+        <h2>Keep Scrolling...</h2>
+        <p>The JavaScript is monitoring your scroll position.</p>
+    </section>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            
+            // If user scrolls more than 50px, add 'scrolled' class
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+</body>
+</html>
